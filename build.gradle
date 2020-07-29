@@ -1,0 +1,83 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies { classpath "io.qameta.allure:allure-gradle:2.6.0" }
+}
+
+plugins {
+    id 'io.qameta.allure' version '2.5'
+    id 'java'
+}
+
+group 'java.selenium.test-automation-framework'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'io.qameta.allure'
+apply plugin: 'java-library'
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'maven'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+allure {
+    autoconfigure = true
+    version = '2.6.0'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+
+    compile group: 'org.aeonbits.owner', name: 'owner', version: '1.0.12'
+
+    compileOnly 'org.projectlombok:lombok:1.18.12'
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+    testCompileOnly 'org.projectlombok:lombok:1.18.12'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
+
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.13.3'
+
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-api', version: '3.141.59'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-support', version: '3.141.59'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-remote-driver', version: '3.141.59'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '3.141.59'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version: '3.141.59'
+
+    testCompile group: 'org.assertj', name: 'assertj-core', version: '3.16.1'
+
+    compile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.5.0-RC2'
+    compile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.5.0-RC2'
+    compile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: '5.5.0-RC2'
+    compile group: 'org.junit.vintage', name: 'junit-vintage-engine', version: '5.5.0-RC2'
+    compile group: 'org.junit.platform', name: 'junit-platform-launcher', version: '1.5.0-RC2'
+    compile group: 'org.junit.platform', name: 'junit-platform-runner', version: '1.5.0-RC2'
+
+// https://mvnrepository.com/artifact/io.qameta.allure/allure-junit5
+    testCompile group: 'io.qameta.allure', name: 'allure-junit5', version: '2.6.0'
+
+// https://mvnrepository.com/artifact/io.qameta.allure/allure-gradle
+    compile group: 'io.qameta.allure', name: 'allure-gradle', version: '2.5'
+// https://mvnrepository.com/artifact/io.qameta.allure/allure-attachments
+    compile group: 'io.qameta.allure', name: 'allure-attachments', version: '2.6.0'
+// https://mvnrepository.com/artifact/io.qameta.allure/allure-selenide
+    compile group: 'io.qameta.allure', name: 'allure-selenide', version: '2.6.0'
+// https://mvnrepository.com/artifact/io.qameta.allure/allure-rest-assured
+    compile group: 'io.qameta.allure', name: 'allure-rest-assured', version: '2.6.0'
+
+
+    // https://mvnrepository.com/artifact/com.codeborne/selenide
+    compile group: 'com.codeborne', name: 'selenide', version: '5.3.1'
+}
