@@ -21,8 +21,8 @@ public abstract class BaseWebTest {
     public void preCondition() {
 
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("disable-infobars");
         options.addArguments("--disable-extensions");
+        options.addArguments("--disable-gpu");
         options.addArguments("--headless");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
