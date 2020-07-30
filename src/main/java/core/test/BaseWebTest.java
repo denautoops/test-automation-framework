@@ -19,6 +19,7 @@ public abstract class BaseWebTest {
     public void preCondition() {
         Configuration.browser = configuration.browser();
         Configuration.startMaximized = true;
+        Configuration.headless = true;
         open("https://www.onliner.by/");
     }
 
