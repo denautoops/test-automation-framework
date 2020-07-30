@@ -2,8 +2,9 @@ package tests.onliner;
 
 import io.qameta.allure.Feature;
 import io.qameta.allure.Issue;
-import io.qameta.allure.TmsLink;
+import io.qameta.allure.Link;
 import onliner.web.ui.pages.OnlinerPage;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import tests.BaseWebTest;
@@ -17,7 +18,7 @@ public class TopNavigationTest extends BaseWebTest {
 
     @Test
     @Feature(value = "Menu Navigation")
-    @TmsLink(value = "Link to Test Case")
+    @Link(value = "Link to Test Case")
     @DisplayName("Test that the verify all navigations items exist")
     public void navigationItemsExistTest() {
         OnlinerPage onlinerPage = new OnlinerPage();
@@ -28,7 +29,7 @@ public class TopNavigationTest extends BaseWebTest {
 
     @Test
     @Feature(value = "Menu Navigation")
-    @TmsLink(value = "Link to Test Case")
+    @Link(value = "Link to Test Case")
     @DisplayName("Test that the verify concrete navigation item exist")
     public void concreteNavigationItemExistTest() {
         OnlinerPage onlinerPage = new OnlinerPage();
@@ -44,7 +45,8 @@ public class TopNavigationTest extends BaseWebTest {
     @Test
     @Feature(value = "Menu Navigation")
     @Issue(value = "123456")
-    @TmsLink(value = "Link to Test Case")
+    @Disabled
+    @Link(value = "Link to Test Case")
     @DisplayName("Test that the verify concrete navigation item exist (Soft Assertion).")
     public void softAssertionNavigationItemTest() {
         OnlinerPage onlinerPage = new OnlinerPage();
