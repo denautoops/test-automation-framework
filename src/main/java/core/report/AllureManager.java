@@ -14,5 +14,4 @@ public final class AllureManager {
     public static byte[] takeScreenshotToAttachOnAllureReport() {
         return ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES);
     }
-
 }
