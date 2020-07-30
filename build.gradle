@@ -33,7 +33,21 @@ allure {
 }
 
 test {
-    useJUnitPlatform()
+    def testTag = 'all'
+
+    def customTag = findProperty('testTag')
+    if (customTag != null) {
+        testTag = customTag
+    }
+
+    useJUnitPlatform {
+        includeEngines 'junit-jupiter'
+        includeTags testTag
+    }
+
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
 }
 
 dependencies {

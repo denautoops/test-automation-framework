@@ -6,6 +6,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -35,6 +36,18 @@ public class OnlinerPage extends BaseWebPage {
                 .map(SelenideElement::getText)
                 .collect(Collectors.toList());
         return actualItems.contains(item.getValue());
+    }
+
+    @Step("Navigate to '{item.value}' page")
+    public void navigateTo(NavigationItem item) {
+        SelenideElement itemElement = $$(NAVIGATION_ITEM).stream()
+                .filter(e -> e.getText().equals(item.getValue()))
+                .findAny()
+                .orElse(null);
+        if (Objects.isNull(itemElement)) {
+            throw new AssertionError(String.format("Navigation items does't contains '%s' item", item.getValue()));
+        }
+        itemElement.click();
     }
 
     public enum NavigationItem {

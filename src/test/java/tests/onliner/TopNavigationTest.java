@@ -6,6 +6,7 @@ import io.qameta.allure.Link;
 import onliner.web.ui.pages.OnlinerPage;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import tests.BaseWebTest;
 
@@ -17,6 +18,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class TopNavigationTest extends BaseWebTest {
 
     @Test
+    @Tag("all")
+    @Tag("navigation")
     @Feature(value = "Menu Navigation")
     @Link(value = "Link to Test Case")
     @DisplayName("Test that the verify all navigations items exist")
@@ -28,9 +31,11 @@ public class TopNavigationTest extends BaseWebTest {
     }
 
     @Test
+    @Tag("all")
+    @Tag("navigation")
     @Feature(value = "Menu Navigation")
     @Link(value = "Link to Test Case")
-    @DisplayName("Test that the verify concrete navigation item exist")
+    @DisplayName("Test that the verify specific navigation item exist. Negative")
     public void concreteNavigationItemExistTest() {
         OnlinerPage onlinerPage = new OnlinerPage();
         assertThat(onlinerPage.isNavigationItemExist(OnlinerPage.NavigationItem.CATALOG)).isTrue();
@@ -43,11 +48,13 @@ public class TopNavigationTest extends BaseWebTest {
     }
 
     @Test
+    @Tag("all")
+    @Tag("navigation")
     @Feature(value = "Menu Navigation")
     @Issue(value = "123456")
     @Disabled
     @Link(value = "Link to Test Case")
-    @DisplayName("Test that the verify concrete navigation item exist (Soft Assertion).")
+    @DisplayName("Test that the verify concrete navigation item exist (Soft Assertion). Negative")
     public void softAssertionNavigationItemTest() {
         OnlinerPage onlinerPage = new OnlinerPage();
         softly.assertThat(onlinerPage.isNavigationItemExist(OnlinerPage.NavigationItem.CATALOG)).isTrue();
