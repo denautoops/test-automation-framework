@@ -16,8 +16,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class TopNavigationTest extends BaseWebTest {
 
     @Test
-    @Feature("Menu Navigation")
-    @TmsLink("Link to Test Case")
+    @Feature(value = "Menu Navigation")
+    @TmsLink(value = "Link to Test Case")
     @DisplayName("Test that the verify all navigations items exist")
     public void navigationItemsExistTest() {
         OnlinerPage onlinerPage = new OnlinerPage();
@@ -27,8 +27,8 @@ public class TopNavigationTest extends BaseWebTest {
     }
 
     @Test
-    @Feature("Menu Navigation")
-    @TmsLink("Link to Test Case")
+    @Feature(value = "Menu Navigation")
+    @TmsLink(value = "Link to Test Case")
     @DisplayName("Test that the verify concrete navigation item exist")
     public void concreteNavigationItemExistTest() {
         OnlinerPage onlinerPage = new OnlinerPage();
@@ -42,9 +42,9 @@ public class TopNavigationTest extends BaseWebTest {
     }
 
     @Test
-    @Feature("Menu Navigation")
-    @Issue("123456")
-    @TmsLink("Link to Test Case")
+    @Feature(value = "Menu Navigation")
+    @Issue(value = "123456")
+    @TmsLink(value = "Link to Test Case")
     @DisplayName("Test that the verify concrete navigation item exist (Soft Assertion).")
     public void softAssertionNavigationItemTest() {
         OnlinerPage onlinerPage = new OnlinerPage();
