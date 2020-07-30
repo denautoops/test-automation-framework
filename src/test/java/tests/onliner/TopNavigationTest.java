@@ -1,8 +1,8 @@
 package tests.onliner;
 
 import com.google.common.collect.ImmutableList;
-import core.test.BaseWebTest;
-import onliner.web.ui.OnlinerPage;
+import tests.BaseWebTest;
+import onliner.web.ui.pages.OnlinerPage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -23,6 +23,32 @@ public class TopNavigationTest extends BaseWebTest {
         List<String> actualNavigationItems = onlinerPage.getAllNavigationItemsText();
 
         assertThat(actualNavigationItems).isEqualTo(expectedNavigationItems);
+    }
+
+    @Test
+    @DisplayName("Test that the verify concrete navigation item exist")
+    public void concreteNavigationItemExistTest() {
+        OnlinerPage onlinerPage = new OnlinerPage();
+        assertThat(onlinerPage.isNavigationItemExist(OnlinerPage.NavigationItem.CATALOG)).isTrue();
+        assertThat(onlinerPage.isNavigationItemExist(OnlinerPage.NavigationItem.NEWS)).isTrue();
+        assertThat(onlinerPage.isNavigationItemExist(OnlinerPage.NavigationItem.AUTO_FLEA_MARKET)).isTrue();
+        assertThat(onlinerPage.isNavigationItemExist(OnlinerPage.NavigationItem.HOUSES_AND_APARTMENTS)).isTrue();
+        assertThat(onlinerPage.isNavigationItemExist(OnlinerPage.NavigationItem.SERVICES)).isTrue();
+        assertThat(onlinerPage.isNavigationItemExist(OnlinerPage.NavigationItem.FLEA_MARKET)).isTrue();
+        assertThat(onlinerPage.isNavigationItemExist(OnlinerPage.NavigationItem.FORUM)).isTrue();
+    }
+
+    @Test
+    @DisplayName("Test that the verify concrete navigation item exist (Soft Assertion).")
+    public void softAssertionNavigationItemTest() {
+        OnlinerPage onlinerPage = new OnlinerPage();
+        softly.assertThat(onlinerPage.isNavigationItemExist(OnlinerPage.NavigationItem.CATALOG)).isTrue();
+        softly.assertThat(onlinerPage.isNavigationItemExist(OnlinerPage.NavigationItem.NEWS)).isFalse();
+        softly.assertThat(onlinerPage.isNavigationItemExist(OnlinerPage.NavigationItem.AUTO_FLEA_MARKET)).isTrue();
+        softly.assertThat(onlinerPage.isNavigationItemExist(OnlinerPage.NavigationItem.HOUSES_AND_APARTMENTS)).isTrue();
+        softly.assertThat(onlinerPage.isNavigationItemExist(OnlinerPage.NavigationItem.SERVICES)).isTrue();
+        softly.assertThat(onlinerPage.isNavigationItemExist(OnlinerPage.NavigationItem.FLEA_MARKET)).isTrue();
+        softly.assertThat(onlinerPage.isNavigationItemExist(OnlinerPage.NavigationItem.FORUM)).isTrue();
     }
 
 }
