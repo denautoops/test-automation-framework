@@ -1,19 +1,11 @@
 package onliner.web.ui.pages;
 
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import com.google.common.collect.ImmutableList;
 import core.web.ui.BaseWebPage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.CacheLookup;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
 
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -37,7 +29,7 @@ public class OnlinerPage extends BaseWebPage {
                 .collect(Collectors.toList());
     }
 
-    @Step("Verification: top navigation items contains '{item}' item")
+    @Step("Verification: top navigation items contains '{item.value}' item")
     public boolean isNavigationItemExist(NavigationItem item) {
         List<String> actualItems = $$(NAVIGATION_ITEM).stream()
                 .map(SelenideElement::getText)
@@ -64,7 +56,7 @@ public class OnlinerPage extends BaseWebPage {
             return value;
         }
 
-        public List<String> getListOfValues() {
+        public static List<String> getListOfValues() {
             return Stream.of(NavigationItem.values())
                     .map(NavigationItem::getValue)
                     .collect(Collectors.toList());

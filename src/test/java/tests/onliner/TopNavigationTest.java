@@ -1,10 +1,12 @@
 package tests.onliner;
 
-import com.google.common.collect.ImmutableList;
-import tests.BaseWebTest;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Issue;
+import io.qameta.allure.TmsLink;
 import onliner.web.ui.pages.OnlinerPage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import tests.BaseWebTest;
 
 import java.util.List;
 
@@ -13,19 +15,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("Top Navigation Test")
 public class TopNavigationTest extends BaseWebTest {
 
-    private static List<String> expectedNavigationItems = ImmutableList
-            .of("Каталог", "Новости", "Автобарахолка", "Дома и квартиры", "Услуги", "Барахолка", "Форум");
-
     @Test
+    @Feature("Menu Navigation")
+    @TmsLink("Link to Test Case")
     @DisplayName("Test that the verify all navigations items exist")
     public void navigationItemsExistTest() {
         OnlinerPage onlinerPage = new OnlinerPage();
         List<String> actualNavigationItems = onlinerPage.getAllNavigationItemsText();
 
-        assertThat(actualNavigationItems).isEqualTo(expectedNavigationItems);
+        assertThat(actualNavigationItems).isEqualTo(OnlinerPage.NavigationItem.getListOfValues());
     }
 
     @Test
+    @Feature("Menu Navigation")
+    @TmsLink("Link to Test Case")
     @DisplayName("Test that the verify concrete navigation item exist")
     public void concreteNavigationItemExistTest() {
         OnlinerPage onlinerPage = new OnlinerPage();
@@ -39,6 +42,9 @@ public class TopNavigationTest extends BaseWebTest {
     }
 
     @Test
+    @Feature("Menu Navigation")
+    @Issue("123456")
+    @TmsLink("Link to Test Case")
     @DisplayName("Test that the verify concrete navigation item exist (Soft Assertion).")
     public void softAssertionNavigationItemTest() {
         OnlinerPage onlinerPage = new OnlinerPage();
