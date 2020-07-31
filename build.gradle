@@ -35,6 +35,11 @@ allure {
 test {
     def testTag = 'all'
 
+    doFirst
+            {
+                environment 'headless', findProperty('headless')
+            }
+
     def customTag = findProperty('testTag')
     if (customTag != null) {
         testTag = customTag
